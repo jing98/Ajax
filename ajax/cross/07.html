@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对整体封装的测试</title>
+  <script type="text/javascript" src="./整体封装.js"></script>
+  <script type="text/javascript">
+   /* ajax({
+      type:'get',
+      // url:'http//gao.com/jsonp.php',
+      url:'http://localhost/cross/data.php',
+      dataType:'json',
+      success:function (data) {
+        console.log(data.username,data.password);
+      }
+    })*/
+
+   ajax({
+     type:'get',
+     // url:'http//gao.com/jsonp.php',
+     url:'http://gao.com/jsonp.php',
+     dataType:'jsonp',
+     data:{username:'zhangsan',password:'123'},
+     jsonpCallback:'abc',
+     jsonp:'cb',
+     success:function (data) {
+       console.log(data.username,data.password);
+     }
+   })
+  </script>
+</head>
+<body>
+
+</body>
+</html>

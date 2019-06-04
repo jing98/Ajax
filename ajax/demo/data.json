@@ -1,0 +1,11 @@
+{
+  "name": "zhangsan",
+  "age": "12",
+  "lover": ["coding","singing","swimming"],
+  "friend": {
+    "high": "180cm",
+    "weight": "80kg",
+    "lover": ["swimming","singing","dancing"],
+    "friend": {}
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsonp-jQuery基本使用</title>
+  <script type="text/javascript" src="./jquery.js"></script>
+  <script type="text/javascript">
+      $(function () {
+        $("#btn").click(function () {
+          $.ajax({
+            type:"get",
+            url:"http://gao.com/jsonp.php",
+            dataType:"jsonp",
+            /*
+            * jsonp属性的作用就是自定义参数名字（callback=abc，
+            * 这里的名字指的是等号前面的键，后端根据这个名字获取方法名
+            * jQuery的默认参数名称为callback）
+            * */
+            jsonp:"cb",
+            /*
+            * jsonpCallback属性的作用就是自定义回调函数的名字（callback=abc,
+            * 这里的名字指的是等号后面的值）
+            * */
+            jsonpCallback:"abc",
+            data:{},
+            success:function (data) {
+              console.log(data.username);
+              console.log(data.password);
+            },
+            error:function (data) {
+              //打印
+              console.dir(data);
+              console.log("error");
+            }
+          })
+        })
+      })
+  </script>
+</head>
+<body>
+  <input type="button" value="点击" id="btn">
+</body>
+</html>

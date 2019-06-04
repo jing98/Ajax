@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript">
+    window.onload = function () {
+      var btn = document.getElementById("btn");
+      btn.onclick = function () {
+        //1.创建XMLHttpRequest对象，以及进行兼容性处理
+        var xhr = null;
+        if (window.XMLHttpRequest)
+        {
+          xhr = new XMLHttpRequest();//标准浏览器
+        }
+        else {
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");//IE6
+        }
+
+        //2.准备发送
+        xhr.open("get","08.php");
+        //3.执行发送动作
+        xhr.send(null);
+        //4.指定回调函数
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4)
+          {
+            if(xhr.status == 200)
+            {
+              var data = xhr.responseText;
+              var obj = JSON.parse(data);
+              var tag = "<div><span>"+obj.info+"</span><span>--------</span><span>"+obj.message+"</span></div>";
+              var info = document.getElementById("info");
+              info.innerHTML = tag;
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="info"></div>
+  <input type="button" value="点击" id="btn">
+</body>
+</html>

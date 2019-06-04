@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>跨域问题</title>
+  <script type="text/javascript" src="./ajax1.js"></script>
+  <script type="text/javascript" src="./jquery.js"></script>
+  <script type="text/javascript">
+    window.onload = function () {
+      $.ajax({
+        type:"get",
+        url:"http://gao.com/data.php",
+        // dataType:"jsonp",
+        success:function (data) {
+          console.log(data);
+        },
+        error:function () {
+          console.log("failure");
+        }
+      })
+    }
+  </script>
+</head>
+<body>
+<input type="button" value="点击" id="btn">
+</body>
+</html>
